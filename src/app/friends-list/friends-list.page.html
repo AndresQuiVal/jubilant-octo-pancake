@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Your friends</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <br>  
+  <ion-label id="title-label">
+    Andres' friends
+  </ion-label>
+  <br>
+  <br>
+  <ion-list>
+    <app-friend-item style="margin: 6px;"
+      [routerLink]="['./', friend.id]"
+      *ngFor="let friend of friendsList"
+      [friend]="friend">
+    </app-friend-item>
+  </ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button position="floating" routerLink="/add-friend">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

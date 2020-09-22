@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/friends-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ friend.name }}'s details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="deleteFriend()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label class="lbl-name" horizonal="end">
+    <b>{{ friend.name }}</b>
+  </ion-label>
+
+  <br>
+  <br>
+
+  <ion-label class="lbl-desc">
+    {{ friend.priority }}
+  </ion-label>
+
+  <br>
+  <br>
+
+  <div>
+    <ion-label>
+      Friends: 
+    </ion-label>
+  
+    <ion-list class="list-friends" *ngIf="friend.friends.length > 0">
+      <div *ngFor="let frFriend of friend.friends">
+        - {{ frFriend.name }}
+      </div>
+    </ion-list>
+
+    <ion-label *ngIf="friend.friends.length == 0">
+      No friends are related with {{ friend.name }}  
+    </ion-label> 
+  </div>
+</ion-content>

@@ -8,9 +8,26 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'friends-list',
     pathMatch: 'full'
   },
+  {
+    path: 'friends-list',
+    children: [
+        {
+          path : '',
+          loadChildren: () => import('./friends-list/friends-list.module').then( m => m.FriendsListPageModule)
+        },
+        {
+          path: ':friendId',
+          loadChildren: () => import('./friend-details/friend-details.module').then( m => m.FriendDetailsPageModule)
+        }
+    ]
+  },
+  {
+    path: 'add-friend',
+    loadChildren: () => import('./add-friend/add-friend.module').then( m => m.AddFriendPageModule)
+  }
 ];
 
 @NgModule({
